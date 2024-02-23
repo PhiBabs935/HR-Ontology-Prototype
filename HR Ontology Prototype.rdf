@@ -1,0 +1,1850 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype/"
+     xml:base="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:CommonCoreOntologies="http://www.ontologyrepository.com/CommonCoreOntologies/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype">
+        <owl:imports rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Mid/2024-02-14/MergedAllCoreOntology"/>
+        <terms:creator>John Gugliotti</terms:creator>
+        <terms:creator>Shane Babcock</terms:creator>
+        <rdfs:comment>Competitive Services = Federal Service in positions that are covered by the Civil Services Act. &quot;In the competitive service, individual must go through a competitive process (i.e. competitive examining) which is open to all applicants. This process may consist of a written test, an evaluation of the individual&apos;s education and experience, and/or an evaluation of other attributes necessary for successful performance in the position to be filled.&quot; https://www.opm.gov/policy-data-oversight/hiring-information/competitive-hiring/#:~:text=Temporary%20appointments%20are%20defined%20as,Term%20Appointment%20%2D%20Time%20limited%20more</rdfs:comment>
+        <rdfs:comment>Excepted Services = Federal Civil Service positions that are specifically excluded from the competitive requirements of the Civil Services Act. These do not confer competitive status.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000232 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000232"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000050 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000050"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002350 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0002350"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002351 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0002351"/>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#appointment_not_to_exceed_date -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#appointment_not_to_exceed_date">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action"/>
+        <rdfs:range rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDay"/>
+        <rdfs:label>appointment not to exceed date</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Compliance_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Compliance_Training_Instruction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Instruction"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_required_by"/>
+                        <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActionRegulation"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000232>Eventually we can replace this with a more spefic class, such as &apos;Congressional Law&apos; or &apos;Federal Regulation&apos;.
+
+Then we can have actual instances of U.S. regulations (like Title 12 or so). And link types of compliance training, via &apos;is required by&apos; to these individual instances of U.S. regulations.</obo:IAO_0000232>
+        <CommonCoreOntologies:alternative_label>Act of Mandatory Employee Training Instruction</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:definition>An Act of Employee Training Instruction that a Company provide to its Employees and which is mandated by some law, agency, or policy external to the Company (such as state and federal regulations).</CommonCoreOntologies:definition>
+        <rdfs:label>Act of Compliance Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Safety_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Safety_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Instruction"/>
+        <CommonCoreOntologies:definition>An Act of Employee Training Instruction wherein a company provides its Employees with knowledge of precautionary procedures intended to mitigate the risk of job related injuries or fatalities, to both its Employees and its customers, as well as improve its organizational health.</CommonCoreOntologies:definition>
+        <rdfs:comment>This is not a subclass of Compliance Training because not all instances of Safety Training are mandated externally. Safety Training includes training that a company may offer, but which is not required by law.</rdfs:comment>
+        <rdfs:label>Act of Employee Safety Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Skills_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Skills_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Instruction"/>
+        <CommonCoreOntologies:definition>An Act of Employee Training Instruction wherein some Agent imparts to some Employee the skills required to perform their job effectively, or teaches the Employee how to apply applicable, previously acquired skills to their job position.</CommonCoreOntologies:definition>
+        <rdfs:comment>Employee skills training is a matter of developing new skills, but also helping show the employee how to apply their previously acquired skills to job specific tasks (latter is particularly relevant in technical skills training).
+
+Note that many of the direct children of this class partially overlap in their instances.</rdfs:comment>
+        <rdfs:label>Act of Employee Skills Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Acquisition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Acquisition">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfTrainingAcquisition"/>
+        <CommonCoreOntologies:definition>An Act of Training Acquisition performed by an Employee of a company by: i) acquiring knowledge of the company&apos;s policies, procedures and guidelines, as well as applicable laws and regulations; and/or ii) acquiring the skills required to effectively perform their role in the company, from some Agent or communication medium that realizes a capacity derived from its affiliation with the company.</CommonCoreOntologies:definition>
+        <rdfs:label>Act of Employee Training Acquisition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfTrainingInstruction"/>
+        <obo:IAO_0000232>Currently, the definition is confined to imparting knowledge about the company, such as its values, policies, procedures, or best practices. But this is not broad enough.
+
+It cannot just imparting knowledge of the relevant company&apos;s so and so. That wouldn&apos;t cover outsourced training, which involves hiring a specialized company to host a training session. They may introduce unfamiliar strategies that benefit a company&apos;s practices or streamline its operations.
+
+So, this needs slight rewording.</obo:IAO_0000232>
+        <obo:IAO_0000232>Issue: Industry Conferences are often introduced as a type of employee training program. Should this be classified as a subclass of employee training or a subclass of conference? Such conferences certainly are used for employee training purposes. 
+
+It might be more appropriate to say that it is a conference (and have it be defined by whatever makes conferences conferences) that has acts of employee training as parts. Thus, they have as parts training sessions on industry-specific skill sets through workshops and seminars.
+
+They involve networking as part. But while networking often involves imparting job applicable knowledge and skills, we shouldn&apos;t say that it is the same thing as training, I think.</obo:IAO_0000232>
+        <obo:IAO_0000232>This is a placeholder class.
+Instances of this class may also fall under the current CCO siblings.
+This is modeled on the definitions of its siblings.</obo:IAO_0000232>
+        <CommonCoreOntologies:alternative_label>Employee Training Program</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:definition>An Act of Training Instruction performed by an Agent who realizes a capacity derived from the Agent&apos;s affiliation with some company by imparting to some Employee, either directly or indirectly through some communication medium: i) knowledge of the Employee&apos;s company&apos;s policies, procedures and guidelines, as well as applicable laws and regulations; and/or ii) the skills required to effectively perform their role in the company.</CommonCoreOntologies:definition>
+        <rdfs:label>Act of Employee Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employment_Termination -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employment_Termination">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/IntentionalAct"/>
+        <CommonCoreOntologies:alternative_label>Act of Employment Separation</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:alternative_label>Separation of Employment</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:alternative_label>Termination of Employment</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:definition>A Planned Act in which some Person ceases to be an Employee of an Organization.</CommonCoreOntologies:definition>
+        <rdfs:comment>Retirement is a tricky case to be handled carefully. 
+
+Retirement is often used to refer to the act in which one ceases to engage in employment related work permanently. But someone can retire from football as a player, thereby ceasing to be employed by the NFL, before moving onto a coaching position in the NFL, or moving into a position in sports media on ESPN or FOX.</rdfs:comment>
+        <rdfs:label>Act of Employment Termination</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Managing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Managing">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/IntentionalAct"/>
+        <CommonCoreOntologies:definition>A Planned Act wherein some Agent directs, controls, or coordinates some Entity or Entities for the purpose of achieving some goal.</CommonCoreOntologies:definition>
+        <rdfs:label>Act of Managing</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Organizational_Management -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Organizational_Management">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Managing"/>
+        <CommonCoreOntologies:definition>An Act of Managing wherein some Agent directs, controls, or coordinates the operations and activities of an Organization, or of some parts of that Organization, in order to accomplish the goals of that Organization.</CommonCoreOntologies:definition>
+        <rdfs:comment>Note that the Agent does not have to be a Manager per se. Hence this leaves room for Acts of Organizational Management wherein individual employees manage their own work (laissez-faire style management)</rdfs:comment>
+        <rdfs:comment>the &apos;parts&apos; clause covers acts of managing that are focused specifically on some subgroup of the organization--such as the managing done by a department manager, or a front-line team leader. Subgroups of organizations are themselves organizations.
+
+Coordinating the operations of an Organization would include coordinating the operations of its parts--e.g. making sure various departments are all acting in coordination.
+
+An Agent can be an individual or group of individuals. Thus, in some case the Agent that manages may be a group.</rdfs:comment>
+        <rdfs:label>Act of Organizational Management</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Organizational_Planning -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Organizational_Planning">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfPlanning"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Organizational_Management"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Act of Organizational Planning</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Spoken_Communication -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Spoken_Communication">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Verbal_Communication"/>
+        <rdfs:label>Act of Spoken Communication</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Temporary_Employment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Temporary_Employment">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>Act of Temporary Employment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Verbal_Communication -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Verbal_Communication">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfCommunication"/>
+        <rdfs:label>Act of Verbal Communication</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Written_Communication -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Written_Communication">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Verbal_Communication"/>
+        <rdfs:label>Act of Written Communication</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Active_Listening_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Active_Listening_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Communication_Skill"/>
+        <rdfs:comment>Apparently, the process &apos;active listening&apos; is not a subtype of listening. Rather, it appears to be a process aggregate having an act of careful or attentive listening as a member part: &quot;Active listening is the practice of preparing to listen, observing what verbal and non-verbal messages are being sent, and then providing appropriate feedback for the sake of showing attentiveness to the message being presented.[1] Active listening is listening on purpose.[2] Active listening is being fully engaged while another person is talking to you. It is listening with the intent to understand the other person fully, rather than listening to respond. Active listening includes asking wide-eyed questions such as, &quot;How did you feel?&quot; or &quot;What did you think?&quot;.[3] This form of listening conveys a mutual understanding between speaker and listener. Speakers receive confirmation their point is coming across and listeners absorb more content and understanding by being consciously engaged. The overall goal of active listening is to eliminate any misunderstandings and establish clear communication of thoughts and ideas between the speaker and listener.[4]&quot; https://en.wikipedia.org/wiki/Active_listening
+
+Notice that the overall goal is to eliminate misunderstandings and establish clear communication.</rdfs:comment>
+        <rdfs:comment>This skill overlaps to some extent with observation, as listening is a form of observation.</rdfs:comment>
+        <rdfs:label>Active Listening Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Personnel_Action"/>
+        <CommonCoreOntologies:definition>A Personnel Action in which some Person is assigned to some job or position.</CommonCoreOntologies:definition>
+        <rdfs:label>Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Nature of Action Identifier that designates some Appointment Personnel Action taken by an Agency.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:elucidation>Appointment NOA Identifiers are designated by 100 Series Nature of Action Codes.</CommonCoreOntologies:elucidation>
+        <rdfs:label>Appointment NOA Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Attrition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Attrition">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/IntentionalAct"/>
+        <rdfs:comment>A temporary convenience class to organize various &quot;types&quot; of employee reduction. 
+
+But also types of employee separation. 
+
+I think that eventually attrition types are going under change of quality.</rdfs:comment>
+        <rdfs:comment>Note that whatever superclass is given for these various types:
+
+That superclass cannot be defined as a reduction in the number of employees in the company. For that would exclude the type &apos;Internal Attrition&apos;, which has to do with one department losing employees to another department in the same organization.
+
+Should be defined as a reduction in the number of members of some Organization, or in the number of members of some suborganization of that Organization.</rdfs:comment>
+        <rdfs:label>Attrition</rdfs:label>
+        <rdfs:seeAlso>https://www.investopedia.com/terms/a/attrition.asp</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Budget_Management_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Budget_Management_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Skill"/>
+        <CommonCoreOntologies:definition>A Skill that inheres in a Person to the extent of that Person’s capacity to manage a budget.</CommonCoreOntologies:definition>
+        <rdfs:label>Budget Management Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career-Conditional_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career-Conditional_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Permanent_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Permanent Appointment Action where an Employee is assigned to job or position with Career-Conditional Status.</CommonCoreOntologies:definition>
+        <rdfs:comment>To do create an employment class, Career-Conditional Employment, which is equivalent to employment where the employee has Career-Conditional Status.</rdfs:comment>
+        <rdfs:label>Career-Conditional Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career-Conditional_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career-Conditional_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career-Conditional_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Career-Conditional Appointment Action taken by an Agency.</CommonCoreOntologies:definition>
+        <rdfs:label>Career-Conditional Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Permanent_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Permanent Appointment Action where an Employee is assigned to job or position wherein the Employee bears some Career Status.</CommonCoreOntologies:definition>
+        <rdfs:comment>To do create an employment class, Career Employment, which is equivalent to employment where the employee has Career Status.
+
+Career Status is a quality (?) that inheres in the Employee by virtue of the fact that the employee has completed a required number of years of substantially continuous Federal service (this number differs between the Competitive and Exceptive Services). https://home.treasury.gov/about/careers-at-treasury/how-to-apply/glossary</rdfs:comment>
+        <rdfs:label>Career Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Career Appointment Action taken by an Agency.</CommonCoreOntologies:definition>
+        <rdfs:label>Career Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Status -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Status">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+        <CommonCoreOntologies:definition>A quality that inheres in a Federal Employee by virtue of the fact the Employee has completed a required number of years of substantially continuous Federal Service.</CommonCoreOntologies:definition>
+        <rdfs:label>Career Status</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Communication_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Communication_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Skill"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+                        <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfCommunication"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/IntentionalAct"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfCommunication"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <obo:IAO_0000232>The clause &apos;as well as other Intentional Acts which aid in the facilitation of such Acts of Communication&apos; is their to cover Intentional Acts such as listening, observing, making eye contact, body language, and the like.
+
+Thus, being able to read the room (a type of observation) helps you to pick the right communication method, tone, etc, and so facilitates clear communication.</obo:IAO_0000232>
+        <obo:IAO_0000232>The definition surely needs refinement, for as it stands, it is too restrictive. [This note can eventually be reworded as an elucidation of the definition once it is fixed.]
+
+It currently only covers one aspect of Communication Skill: the speaker&apos;s capacity to convey information clearly, effectively, and efficiently. 
+
+It may not sufficiently cover the receptive side of Communication Skill. This includes:
+-listening, empathizing, observing.
+I noted that the &apos;as well as other Intentional Acts which aid in the facilitation of such Acts of Communication&apos; is their to cover Intentional Acts such as listening, observing, making eye contact, body language, and the like which help facilitate communication that is clear, effective, and efficient.
+-Thus, listening and observing well might enable the speaker to convey their ideas well. E.g., actively listening to your interlocutor facilitates your understanding of them, which will help you avoid confusions that may otherwise lead to subsequent poor communication on your part.
+
+-But while this skill plays a role in enabling the speaker to communicate their ideas well to other, it is not just a skill realized by such acts. It is a skill that the speaker realizes when recieving information conveyed by the other interlocutor(s).
+
+I guess it depends what the scope is for CCO&apos;s Act of Communication. That class is defines as: A Planned Act in which some Information Content Entity is transferred from some Agent to Another.
+
+-When I observe someone else&apos;s body language, I pick up information about that person, for instance if they are squirming in their chair this conveys the information that they are nervous. But is it a case of that Person transferring information to me? I don&apos;t see why not.
+
+It also doesn&apos;t cover Communication Skills that are not primarily oriented towards the goal of clear, effective, efficient communication. 
+Example: friendliness, respectfulness. 
+-Of course, communicating in a friendly and respectful manner may also aid in the facilitation of effective information transfer, but that is not the primary intention of being friendly and respectful.</obo:IAO_0000232>
+        <CommonCoreOntologies:definition>A Skill that is realized both in Acts of Communication that convey information clearly, effectively, and efficiently, as well as other Intentional Acts which aid in the facilitation of such Acts of Communication.</CommonCoreOntologies:definition>
+        <rdfs:comment>using BFO&apos;s in development term &apos;process characteristic&apos;, we can later add &apos;clear&apos;, &apos;effective&apos;, &apos;efficient&apos; as process characteristics of the Act of Communication.</rdfs:comment>
+        <rdfs:label>Communication Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Communicative_Confidence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Communicative_Confidence">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Communication_Skill"/>
+        <CommonCoreOntologies:definition>A Communication Skill that is realized both in Acts of Communication, and other Acts and Behaviors which they involve (such as eye contact, body positioning, or body language), that exhibit a feeling of confidence.</CommonCoreOntologies:definition>
+        <rdfs:comment>A defined class for various different types of communication skills whose realization exhibits a feeling of confidence.</rdfs:comment>
+        <rdfs:label>Communicative Confidence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Service_Career_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Service_Career_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Career Appointment Action where the Employee is assigned to a job or position, with Career Status, in the Competitve Services.</CommonCoreOntologies:definition>
+        <rdfs:label>Competitive Service Career Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Term_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Term_Appointment">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Action"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Term_Appointment_Period"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>A Term Appointment Action where a Person is assigned to a job or position in the Competitive Services that is limited to a specified time period lasting at least more than one year, but no more than 4 years, and is tied to a specific project such that the assignment will terminate upon completion of the project.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf;
+ https://www.opm.gov/policy-data-oversight/hiring-information/competitive-hiring/#:~:text=Temporary%20appointments%20are%20defined%20as,Term%20Appointment%20%2D%20Time%20limited%20more</CommonCoreOntologies:definition_source>
+        <CommonCoreOntologies:elucidation>Elucidation of Logical Definition
+
+A Term Appointment Action results in the Employee serving in an appointment that is expected to last for a specified period of time lasting at least more than one year, but no more than four years. The logical axiom thus says that the appointment results in the Employee serving in an appointment (the Act of Employment) that occurs over a Term Appointment Period. A Term Appointment Period is a one-dimensional temporal region that spans more than one year, but no more than 4 years. It is a defined class which has its own axiomatization.</CommonCoreOntologies:elucidation>
+        <rdfs:label>Competitive Services Term Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Term_Appointment_Period -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Term_Appointment_Period">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Period"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/interval_equals"/>
+                        <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/MultiYearTemporalInterval"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/interval_equals"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:maxQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarYear"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>A Term Appointment Period in the Competitive Services that spans more than one Calendary Year, but no more than four Calendar Years.</CommonCoreOntologies:definition>
+        <rdfs:label>Competitive Services Term Appointment Period</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Confidence_in_Speech -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Confidence_in_Speech">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speaking_Skill"/>
+        <CommonCoreOntologies:definition>A Speaking Skill that is realized in Acts of Spoken Communication that exhibit a feeling of confidence.</CommonCoreOntologies:definition>
+        <rdfs:comment>The label is clunky. But I would distinguish this skill from the emotion or feeling of confidence that is involved in the skill.</rdfs:comment>
+        <rdfs:label>Confidence in Speech</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Corporate_Employee_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Corporate_Employee_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Skills_Training_Instruction"/>
+        <CommonCoreOntologies:definition>An Act of Employee Skills Training Instruction wherein some Agent imparts to some long term Employee new knowledge and skills in order to help that Employee improve at their current job, advance in their career, or close organizational skill gaps within the company.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.td.org/talent-development-glossary-terms/what-is-employee-training-and-development</CommonCoreOntologies:definition_source>
+        <rdfs:label>Corporate Employee Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Customer_Service_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Customer_Service_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Skills_Training_Instruction"/>
+        <CommonCoreOntologies:definition>An Act of Employee Skills Training Instruction wherein some Agent imparts to some Employee the knowledge and skills that they need to provide exceptional customer service.</CommonCoreOntologies:definition>
+        <rdfs:label>Customer Service Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Demographic-Related_Attrition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Demographic-Related_Attrition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition"/>
+        <CommonCoreOntologies:definition>An Employee Attrition resulting from the unexpected and rapid departure of a number of an Organization&apos;s employees who are all identified within a certain demographic group (e.g. women, ethnic minority).
+
+
+A reduction in the number of an Organization&apos;s employees resulting from the unexpected and rapid departure of a number of employees all identified within a certain demographic group (e.g. women, ethnic minority).</CommonCoreOntologies:definition>
+        <rdfs:comment>Could have axiom like:
+
+is caused by SOME 
+      Employee resignation AND has participant SOME [....]
+
+Where the class in the [....] would be a defined class. We would add a subclass of CCO&apos;s Group of Persons, namely Group of Employees. The defined class would be &apos;Demographic Group of Employees&apos; where all members of the group have the same demographic feature.</rdfs:comment>
+        <rdfs:label>Demographic-Related Attrition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Downsizing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Downsizing">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employment_Termination"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/has_process_part"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employment_Termination"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>permanent reduction of a company’s labor force through the elimination of unproductive workers or divisions.
+
+usually associated with economic downturns and failing business. Cutting jobs is the fastest way to cut costs.
+
+Also done in order to create leaner and more efficient businesses. Lean enterprise philosophy: “According to the production principles of lean enterprise, any component of a business enterprise that fails to directly benefit a final product is superfluous.” So, you eliminate the components that fail to directly benefit the final product.
+
+Under the section &apos;Layoffs and Downsizing&apos; [here https://www.investopedia.com/terms/t/termination-employment.asp]
+it is seemingly implied that downsizing and layoffs go together. But is &apos;employees are usually let go through no fault of their own&apos; consistent with &apos;elimination of unproductive workers or divisions&apos;? 
+-In order to be consistent, &apos;being unproductive&apos; must not imply some fault on the part of the employee.</rdfs:comment>
+        <rdfs:label>Downsizing</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Emergency_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Emergency_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action"/>
+        <rdfs:comment>An Emergency Appointment is an indefinite appointment made in a national emergency, as defined in 5 CFR part 230, subpart D.
+
+https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
+
+https://www.ecfr.gov/current/title-5/chapter-I/subchapter-B/part-230/subpart-D</rdfs:comment>
+        <rdfs:label>Emergency Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Emergency_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Emergency_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Emergency_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Emergency Appointment Action taken by an Agency.</CommonCoreOntologies:definition>
+        <rdfs:label>Emergency Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DecreaseOfQuality"/>
+        <CommonCoreOntologies:definition>Def1: A Decrease of Quality in which there is a reduction in the overall number of Persons employed by an Organization.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>Def2: A Decrease of Quality in which there is either an overall reduction in the number of Persons employed by an Organization, or a reduction in the number of employees within some department or division of that Organization.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.merriam-webster.com/dictionary/attrition</CommonCoreOntologies:definition_source>
+        <rdfs:comment>Def1 would exclude &apos;Internal Attrition&apos;. That&apos;s ok IF Internal Attrition is a sibling of Employee attrition. But if it is a subtype, we need to use Def2.</rdfs:comment>
+        <rdfs:comment>Employee attriition usually occurs as a result of employee dismissals, retirements, resignations or deaths.</rdfs:comment>
+        <rdfs:label>Employee Attrition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition_Rate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition_Rate">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000144"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/has_process_part"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Attrition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A process profile that is the rate at which people leave a company during a particular period of time.</CommonCoreOntologies:definition>
+        <rdfs:comment>Attrition rate = (number of departures/average number of employees over the relevant time period) x (100)
+
+So, if company had an average of 250 employees over the course of a year, and 50 departures during that year, then the attrition rate for the year would be:
+
+(50/250) x 100    =  20%</rdfs:comment>
+        <rdfs:label>Employee Attrition Rate</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Soft_Skills_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Soft_Skills_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Skills_Training_Instruction"/>
+        <CommonCoreOntologies:definition>An Act of Employee Skills Training Instruction wherein some Agent imparts to some Employee the Soft Skills that are required to perform their job effectively.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.td.org/talent-development-glossary-terms/what-is-employee-training-and-development</CommonCoreOntologies:definition_source>
+        <rdfs:comment>Soft skills include emotional intelligence, adaptability, creativity, influence, communication, and teamwork.</rdfs:comment>
+        <rdfs:label>Employee Soft Skills Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Technical_Skills_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Technical_Skills_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Skills_Training_Instruction"/>
+        <CommonCoreOntologies:definition>An Act of Employee Skills Training Instruction wherein some Agent helps some Employee to develop and practice the Technical Skills required to effectively perform certain technical tasks that are part of that Employee&apos;s job position.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.td.org/talent-development-glossary-terms/what-is-employee-training-and-development; https://www.indeed.com/career-advice/career-development/example-of-training-program</CommonCoreOntologies:definition_source>
+        <rdfs:comment>Technical Skills Training is often specifically tailored to particular job tasks within a single organization. For instance, tech companies will often use their own specific computer systems, with their own system specific protocols and requirements.</rdfs:comment>
+        <rdfs:label>Employee Technical Skills Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Service_Career_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Service_Career_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action"/>
+        <rdfs:label>Excepted Service Career Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Furlough -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Furlough">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employment_Termination"/>
+        <rdfs:comment>&quot;A furlough is intended to be temporary and is usually due to a short-term production shutdown. Workers who have been furloughed may keep their job titles and employee benefits with the expectation that they will eventually return to work.&quot;
+
+Create a related Action Permission axiom, using a defined class:
+
+Furloughed Worker
+
+     Action Permission
+             permits some Furloughed Worker to keep job title, keep employee benefits, and so on.</rdfs:comment>
+        <rdfs:label>Furlough</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Human_Resources -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Human_Resources">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/GroupOfPersons"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/Person"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_supervised_by"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/Person"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
+                                                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Organization"/>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000232>I want in the subclass axiom to say something simpler to the effect that human resources are Persons that are under the control of some Organization. But the only relevant CCO relation, namely &apos;is supervised by&apos;, is a relation holding between individual Persons.</obo:IAO_0000232>
+        <obo:IAO_0000232>Issue: what about Persons who are Self-Employed and not a member of any relevant organization? 
+
+Are they controlled by a relevant Agent? If not, how can they count as a CCO Resource?</obo:IAO_0000232>
+        <CommonCoreOntologies:definition>A Group of Persons that constitutes the workforce of some Organization, business sector, industry, or economy.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://en.wikipedia.org/wiki/Human_resources</CommonCoreOntologies:definition_source>
+        <rdfs:comment>A Group of Persons constitutes a Human Resource by virtue of being controlled by some Agent such that it could be used by that Agent. Thus, in an inferred hierarchy, this class would also fall under the CCO class Resource.
+
+Thus, the employees of a company are a Human Resource insofar as they are under the control of that company, and can be used by that company for the purpose of accomplishing its business objectives.</rdfs:comment>
+        <rdfs:label>Human Resources</rdfs:label>
+        <rdfs:seeAlso>http://www.ontologyrepository.com/CommonCoreOntologies/Resource</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Human_Resources_Management -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Human_Resources_Management">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Organizational_Management"/>
+        <rdfs:comment>From wikipedia (plus my further thoughts)
+
+it has to do with the &quot;effective and efficient management of people in a company or organization such that they help their business gain a competitive advantage&quot;. 
+[Comment: is this process the sole purview of Agents in the Human Resources department? If so, such a description doesn&apos;t really narrow things down sufficiently so as to exclude acts that are the purview of Non-HR members of an organization. Non-HR managers are also engaging in acts of managing people in a company in order to gain a competitive advantage.]
+
+-HRM is primarily concerned with the management of people within an organization by means of overseeing policies and company systems.
+[Comment: once again, if a non-HR person works on policy or systems, are they engaged in human resource management. If not, then need to word things so that there acts are not encompassed]
+
+HR departments are responsible for overseeing:
+-employee-benefits design, 
+-employee recruitment, 
+-training and development, 
+-performance appraisal
+-reward management, such as managing pay and employee benefits systems.
+
+[Comment: need to make explicitly clear what &apos;overseeing&apos; entails here. Consider for instance Outsourced Employee Training, or Act of Training where a long term employee in a given department trains a new hire from that same department. Neither the the outsourced trainer or the long term employee need be an HR agent.]
+
+-HR professionals &quot;can specialize in finding, recruiting, selecting, training, and developing employees, as well as maintaining employee relations or benefits. Training and development professionals ensure that employees are trained and have continuous development.&quot;
+[Comment: make clear HR&apos;s role in &apos;ensuring&apos; employees are trained, or recruiting. Distinguish from the role that non-HR plays in it]</rdfs:comment>
+        <rdfs:label>Human Resources Management</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Industry_Conference -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Industry_Conference">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfMeeting"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/has_process_part"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Instruction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Placeholder class. Ultimately there would be a number of superclasses between it and Act of Meeting.</rdfs:comment>
+        <rdfs:label>Industry Conference</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Internal_Attrition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Internal_Attrition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition"/>
+        <CommonCoreOntologies:definition>A reduction in the number of employees within some department or division of an Organization as a result of some employees moving to another department or division within that organization.
+
+An Employee Attritution in which the number of employees within some department or division of an Organization is reduced as a result of some employees moving to another department or division within that Organization.</CommonCoreOntologies:definition>
+        <rdfs:comment>Internal attrition refers to movement out of one department or division and into another. The employee isn&apos;t leaving the company. They&apos;re simply making a move within it.</rdfs:comment>
+        <rdfs:comment>is caused by some promotion OR lateral movement...</rdfs:comment>
+        <rdfs:label>Internal Attrition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Internal_Employee_Skills_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Internal_Employee_Skills_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Skills_Training_Instruction"/>
+        <CommonCoreOntologies:alternative_label>Internal Training Instruction</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:definition>An Act of Employee Skills Training Instruction wherein some current Employee of a company works with newly hired Employees to impart to them knowledge of skill-building techniques and to discuss with them other professional development goals.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.indeed.com/career-advice/career-development/example-of-training-program</CommonCoreOntologies:definition_source>
+        <rdfs:comment>Presumably some instances of &apos;shadowing&apos; involving both a new hire and a long-term employee will count as instances of Internal Employee Training.</rdfs:comment>
+        <rdfs:label>Internal Employee Skills Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Involuntary_Attrition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Involuntary_Attrition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition"/>
+        <CommonCoreOntologies:definition>A reduction in workforce that occurs as a result of an organization dismissing employees through an act of furloughing, firing, or layoffs, or the elimination of an employee&apos;s position.
+
+An Employee Attrition in which the workforce of an Organization is reduced a result of the Organization dismissing employees through an act of furloughing, firing, or layoffs, or the elimination of an employee&apos;s position.</CommonCoreOntologies:definition>
+        <rdfs:comment>Could have an axiom such as: &apos;is caused by&apos; SOME (furloughing OR firing OR layoff)</rdfs:comment>
+        <rdfs:comment>Involuntary attrition occurs when the business dismisses employees.
+
+This can be because of an employees bad behaviour. [This is clearly referring to firing. But employee firing is already an act of its own. So I think this confirms that &apos;attrition&apos; here is referring to a reduction in employee numbers, however it came about.]
+
+Or it can occur when company has to eliminate an employee position, or it has to layoff employees due to some worrisome economic condition.
+-This would also occur due to furloughing.</rdfs:comment>
+        <rdfs:label>Involuntary Attrition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Layoff -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Layoff">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employment_Termination"/>
+        <CommonCoreOntologies:definition>An Act of Employment Termination in which an Organization temporarily suspends or permanently ends an Employee&apos;s employment within the Organization for business reasons unrelated to the Employee&apos;s job performance.</CommonCoreOntologies:definition>
+        <rdfs:comment>A layoff is the temporary or permanent termination of a worker&apos;s employment for reasons unrelated to the individual&apos;s performance on the job.
+
+-If it is for reasons other than job performance, then it cannot be a type of downsizing if the latter is defined in terms of unproductivity. 
+-If the reason for separation in the case of downsizing is tied to job performance, then layoff is not the same thing.</rdfs:comment>
+        <rdfs:comment>Potential axiom: connecting layoff to qualification for federal unemployment benefits.
+
+Layoffs entitle the laid off employee to:
+
+-federal unemployment benefits
+
+They have a right (under COBRA) to continue their company health plan coverage at their own expense.
+         COBRA has part Action Permission
+                  -permits some (Act of continue company health plan AND (has participant SOME Laid-Off Employee))
+
+Here, &apos;laid-off&apos; employee would be a defined class, something like: Employee AND object of some layoff.
+
+&quot;Workers who are laid off qualify for government-sponsored unemployment benefits, unlike those who are fired for cause.&quot;
+
+So, COBRA has part some Action Prohibition
+              -prohibits some Fired for Cause Employee from continuing company health care coverage</rdfs:comment>
+        <rdfs:label>Layoff</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Management_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Management_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Skills_Training_Instruction"/>
+        <CommonCoreOntologies:definition>An Act of Employee Skills Training Instruction wherein some Agent imparts to some Employee the knowledge and skills that Employee needs to effectively supervise a team, as well as develop the talents of their team members.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.td.org/talent-development-glossary-terms/what-is-employee-training-and-development; https://www.indeed.com/career-advice/career-development/example-of-training-program</CommonCoreOntologies:definition_source>
+        <rdfs:comment>Instances of this training will also be instances of technical and soft skills training. Management skills overlap with those skills.</rdfs:comment>
+        <rdfs:label>Management Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Mandatory_Safety_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Mandatory_Safety_Training_Instruction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Safety_Training_Instruction"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_required_by"/>
+                        <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActionRegulation"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>An Act of Employee Safety Training Instruction that a Company provide to its Employees and which is mandated by some law, agency, or policy external to the Company (such as state and federal regulations).</rdfs:comment>
+        <rdfs:label>Mandatory Employee Safety Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_101 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_101">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career-Conditional_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;101&apos;, which designates some Career-Conditional Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 101</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_107 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_107">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Emergency_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;107&apos;, which designates some Emergency Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 107</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_108 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_108">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Not-to-exceed_(date)_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;108&apos;, which designates some Term Appointment Not-to-exceed (date) Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 108</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_115 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_115">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Not-to-exceed_(date)_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;115&apos;, which designates some Appointment Not-to-exceed (date) Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 115</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_120 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_120">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;120&apos;, which designates some Overseas Limited Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 120</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_122 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_122">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Not-To-Exceed_(Date)_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;122&apos;, which designates some Overseas Limited Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 122</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_148 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_148">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Service_Limited_Term_Appointment_Not-To-Exceed_(Date)_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Nature of Action Code 148</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_190 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_190">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment_Not-To-Exceed_(date)_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;190&apos;, which designates some Provisional Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 190</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Identifier">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/DesignativeInformationContentEntity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Personnel_Action"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#US_OPM_Nature_of_Action_Code"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:alternative_label>Nature of Action</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:definition>A Designative Information Content Entity that consists of a string of characters that designates some Personnel Action.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf</CommonCoreOntologies:definition_source>
+        <CommonCoreOntologies:elucidation>A Personnel Action can either be an action that an Agency has taken with respect to some Employee (such as a promotion or a firing) or an action taken by an Employee (such as a voluntary retirement or resignation).</CommonCoreOntologies:elucidation>
+        <rdfs:comment>I should perhaps use &apos;processed&apos; in the subclass definitions. 
+
+Thus, there are Personnel Actions taken by the Agency (e.g. firings) and those taken by the Employee (voluntary retirement).
+
+And in each case the Agency processes the Personnel Action. As in:
+
+Guide to Processing Personnel Actions, Section: 3. Documentation of Personnel Actions: 
+&quot;a) Request for Personnel Action. For most of the personnel actions you process, there will be a Request for Personnel Action, Standard Form 52, or a similar agency form approved by the Office of Personnel Management...&quot;</rdfs:comment>
+        <rdfs:comment>Personnel actions must be authorized:
+
+&quot;The legal authority is the law, Executive Order, regulation, agency directive, or the instruction under which the personnel action is taken. While the nature of action identifies the personnel action, the authority identifies the specific circumstances under which the action is taken.&quot;
+p. 6 https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf
+
+So, do we only count processes as instances of Personnel Action if they have been authorized by one of the above?
+
+Relate to CCO Action Permission?</rdfs:comment>
+        <rdfs:label>Nature of Action Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action"/>
+        <CommonCoreOntologies:definition>An Appointment Action where a Person is assigned to a job or position that is expected to last for a limited, specified time period.</CommonCoreOntologies:definition>
+        <rdfs:comment>Add subclass axiom representing the fact that temporary appointments do not confer upon the employee &apos;Competitive Status&apos;.</rdfs:comment>
+        <rdfs:label>Nonpermanent Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#OPM_Nature_of_Action_Remark -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#OPM_Nature_of_Action_Remark">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DescriptiveInformationContentEntity"/>
+        <rdfs:label>OPM Nature of Action Remark</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#OPM_Remark_Code -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#OPM_Remark_Code">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CodeIdentifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#OPM_Nature_of_Action_Remark"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The first character of a Remark Code indicates the purpose for which the designated remark is used. For example, Remark Codes starting with the letter &apos;A&apos; indicate remarks used to explain an appointment limitation.</rdfs:comment>
+        <rdfs:label>OPM Remark Code</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Observational_Communication_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Observational_Communication_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Communication_Skill"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfObservation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Communication Skill that is an Observational Skill realized in Acts of Observation which help to facilitate clear, effective, and efficient Acts of Communication.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:elucidation>This would be any skill in acquiring information concerning one&apos;s audience and/or interlocutor(s)--such as information about their beliefs, emotional states, and the like-- through the observation of facial expressions, body language (including gestures, mannerisms, body posturing), and speech behaviors (such as tone of voice). Information which in turn can be used to facilitate better communication with one&apos;s audience and/or interlocutor(s).</CommonCoreOntologies:elucidation>
+        <rdfs:comment>I think this is a defined class. Observational Skills would be inferred under here, rather than asserting them as subtypes. Because the same observational skills may be relevant to doing other types of acts well. For instance, the observational skills that help facilitate better communication with an interlocutor--such as picking up important cues from someone&apos;s body language--may also be the same observational skills that are involved in detective work. Thus, observing certain body language may be a detective skill that facilitates detection of a person&apos;s guilt in a crime. 
+
+Thus, Observational Skill would be the top node of a separate branch of the Skill hierarchy. Subclasses of this would be directly asserted. But would only be inferred subclasses of communication or detective skills.
+
+Communicative Observational Skills are surely closely associated with listening skills.</rdfs:comment>
+        <rdfs:label>Observational Communication Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Organizational_Attrition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Organizational_Attrition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Attrition"/>
+        <obo:IAO_0000232>This is probably the only one that should be an actual process. 
+
+It is based on an attrition policy.</obo:IAO_0000232>
+        <rdfs:comment>&quot;It is commonly used to describe the downsizing of a firm&apos;s employee pool by human resources (HR) professionals. In this case, downsizing is voluntary, where employees either resign or retire and aren&apos;t replaced by the company.&quot;
+
+This seems to be a multipart process. It involves HR giving employees incentives to resign or retire. And putting a freeze on hiring.
+
+Edit: “Because severe long-term consequences can outweigh any short-term gains, many companies are wary of downsizing, and often take a gentler approach, by cutting work hours, instituting unpaid vacation days, or offering employees incentives to take early retirement.”  
+-This suggests that downsizing does not include incentivized retirement.
+
+But then it is different from the way &apos;voluntary attrition&apos; is described. That just seems to refer to any case where there is a reduction in employees. That might occur due to problems in the company, or due to employee personal reasons. But neither of these has to involve any deliberate actions by HR to bring this reduction about.</rdfs:comment>
+        <rdfs:comment>I see sources saying this type of downsizing is called a &apos;hiring freeze&apos;. If so, then this is just a case of HR professionals needing to be corrected.
+
+Organizational Attrition is a process that involves a hiring freeze. For HR freezes hiring, but no current employees choose to resign, there would be no reduction in staff numbers.
+
+So: should be a process that:
+                       has process part SOME Hiring Freeze
+
+Hiring Freeze: A hiring freeze is when an employer stops hiring workers, usually temporarily, in an effort to contain costs.</rdfs:comment>
+        <rdfs:label>Organizational Attrition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Organizational_Management_by_Objectives -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Organizational_Management_by_Objectives">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Organizational_Management"/>
+        <CommonCoreOntologies:definition>An Act of Organizational Management wherein some Agent sets specific task related goals for some subordinate Agent in order to provide the subordinate with a clearer understanding of their Organizational Member Role.</CommonCoreOntologies:definition>
+        <rdfs:label>Organizational Management by Objectives</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Outsourced_Employee_Training_Acquisition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Outsourced_Employee_Training_Acquisition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Acquisition"/>
+        <CommonCoreOntologies:definition>An Act of Employee Training Acquisition wherein an Employee either learns certain skills needed to improve their job performance, or learns about unique and unfamiliar workplace procecures and strategies that may enhance the company&apos;s practices or streamline its operations, from an Agent from outside of the company.</CommonCoreOntologies:definition>
+        <rdfs:label>Outsourced Employee Training Acquisition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Outsourced_Employee_Training_Instruction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Outsourced_Employee_Training_Instruction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Employee_Training_Instruction"/>
+        <obo:IAO_0000232>with the last clause, I am trying to capture the idea that external professionals often may serve to improve the company&apos;s organizational effectiveness by offering a unique persepctive on workplace procedures, introducing unfamiliar strategies that can enhance the company&apos;s own established practices or streamline its operations.
+https://www.indeed.com/career-advice/career-development/example-of-training-program</obo:IAO_0000232>
+        <CommonCoreOntologies:definition>An Act of Employee Training Instruction wherein a company hires an Agent from outside of that company to impart to its Employees certain skills needed to improve Employee job performance or introduce to its Employees unique and unfamiliar workplace procecures and strategies that may enhance the company&apos;s practices or streamline its operations.</CommonCoreOntologies:definition>
+        <rdfs:comment>This was not classified as a subclass of skills training, since an external trainer may be hired to provide a training session that is not skills oriented, but is instead limited to imparting knowledge about unique and unfamiliar workplace procedures and strategies. [Not sure about this. Requires discussion]</rdfs:comment>
+        <rdfs:label>Outsourced Employee Training Instruction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Nonpermanent Appointment Action where some United States citizen is either recruited overseas, or recruited within the United States, for overseas employment.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
+Guide to Processing Personnel Actions, Chapter 10, Section 2(g)</CommonCoreOntologies:definition_source>
+        <CommonCoreOntologies:elucidation>&quot;The appointments can be made (1) on an indefinite basis, (2) for a term or period not-to-exceed 5 years under programs for rotating career and career-conditional employees between overseas areas and the United States or (3) on a temporary limited basis for a period not-to-exceed one year.&quot; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
+
+Notice that instances of case (3) would fall under &apos;Appointment Not To Exceed&apos;. But that class is not limited to Oversees Limited Appointments.</CommonCoreOntologies:elucidation>
+        <rdfs:label>Overseas Limited Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Overseas Limited Appointment made by an Agency.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf</CommonCoreOntologies:definition_source>
+        <rdfs:label>Overseas Limited Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Period_of_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Period_of_Appointment">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000038"/>
+        <rdfs:comment>A one-dimensional temporal region which is the duration of some Employee&apos;s employment in a given job or position.</rdfs:comment>
+        <rdfs:label>Period of Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Permanent_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Permanent_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action"/>
+        <rdfs:label>Permanent Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Personnel_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Personnel_Action">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/IntentionalAct"/>
+        <rdfs:comment>Should be reassigned to a more specific parent. 
+
+This is a convenience grouping for now. The actions I am putting under here now may eventually be inferred subclasses which are asserted as children of different parent types.</rdfs:comment>
+        <rdfs:comment>This will be a rather disjunctive defined class. To do: determine whether there is any general feature these various actions types are scooped in under.
+
+https://www.law.cornell.edu/uscode/text/5/2302#a_2
+
+Although, note that it says &quot;for the purposes of this section&quot;
+
+It also says it only covers actions with respect to &quot;covered positions&quot; in a subset of the the Executive agencies.</rdfs:comment>
+        <rdfs:label>Personnel Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Personnel_Action_Reporting_Requirement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Personnel_Action_Reporting_Requirement">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/ActionRegulation"/>
+        <rdfs:comment>&quot;The Office of Personnel Management&apos;s authority to prescribe reporting requirements covering personnel actions is in section 2951, title 5, United States Code.&quot; p. 2 of guide.
+
+See also: https://www.law.cornell.edu/uscode/text/5/2951#:~:text=5%20U.S.%20Code%20%C2%A7%202951%20%2D%20Reports%20to%20the%20Office%20of%20Personnel%20Management,-U.S.%20Code&amp;text=the%20Office%20keep%20records%20of,L.</rdfs:comment>
+        <rdfs:comment>An Action Regulation that requires some Agent to to report any Personnel Actions that they intend to take to the Office of Personal Management.</rdfs:comment>
+        <rdfs:label>Personnel Action Reporting Requirement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Position_Classification_Standard -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Position_Classification_Standard">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DirectiveInformationContentEntity"/>
+        <rdfs:comment>&quot;Issued by OPM to relate the grade level definitions in title 5 to specific work situations and thereby provide the basis for assigning each position the appropriate title, series, and grade.&quot; Introduction to the Position Classification Standards</rdfs:comment>
+        <rdfs:comment>&quot;Position classification standards provide information used in determining the occupational series and title for positions performing white collar work in the Federal Government. They also provide grading criteria for positions classified under the General Schedule (GS) Classification System.&quot; https://www.opm.gov/policy-data-oversight/classification-qualifications/classifying-general-schedule-positions/#url=Standards</rdfs:comment>
+        <rdfs:label>Position Classification Standard</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Prohibited_Personnel_Practice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Prohibited_Personnel_Practice">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/IntentionalAct"/>
+        <rdfs:comment>This is a defined class. Closely related to Personnel Action. Seems to refer to practices that are prohibited in the course of a Personnel Action. Thus, there are many rules that prohibit disrimination in the workplace. This in particular is a rule that prohibits it specifically in the course of actions taken with respect to Personnel. (Or so it seems to me).
+
+https://www.mspb.gov/ppp/ppp.htm
+
+Maybe add: 5 USC § 2302(b)) into the ontology as an individual. Say it is part of  5 USC § 2302. Make it an instance of CCO Action Prohibition.
+Add axiom for this class: prohibited by  5 USC § 2302(b))</rdfs:comment>
+        <rdfs:label>Prohibited Personnel Practice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Temporary Appointment Action where an Agency assigns an employee to a continuing position with the intention of later converting the employee to a nontemporary appointment and that Agency has current authority to make such a conversion.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf</CommonCoreOntologies:definition_source>
+        <rdfs:label>Provisional Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Public_Speaking_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Public_Speaking_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speaking_Skill"/>
+        <CommonCoreOntologies:definition>A Speaking Skill that inheres in a speaker to the extent of that speaker&apos;s capacity to communicate clearly, effectively, and efficiently to a large group of people.</CommonCoreOntologies:definition>
+        <rdfs:label>Public Speaking Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Service_Limited_Term_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Service_Limited_Term_Appointment">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Action"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Limited_Term_Appointment_Period"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>A Term Appointment Action where a Person is assigned to a position in the Senior Executive Services that is limited to a specified time period lasting three years or less, and where the Person is typically assigned to a project-type position or a position established to facilitate transition between Administrations.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/senior-executive-service/reference-materials/guidesesservices.pdf (under Limited Appointments)
+https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa13.pdf (see Table 13A)</CommonCoreOntologies:definition_source>
+        <rdfs:label>Senior Executive Service Limited Term Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Limited_Term_Appointment_Period -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Limited_Term_Appointment_Period">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Period"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/interval_equals"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:maxQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarYear"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>A Term Appointment Period in the Senior Executive Services that spans up to but no more than 3 Calendar Years.</CommonCoreOntologies:definition>
+        <rdfs:label>Senior Executive Services Limited Term Appointment Period</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speaking_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speaking_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Verbal_Communication_Skill"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Spoken_Communication"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Verbal Skill that is realized in Acts of Spoken Communication that convey information clearly, effectively, and efficiently.</CommonCoreOntologies:definition>
+        <rdfs:label>Speaking Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speech_Adjustment_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speech_Adjustment_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speaking_Skill"/>
+        <CommonCoreOntologies:alternative_label>Voice Control Skill?</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:definition>A Speaking Skill that inheres in the speaker to extent of that speaker&apos;s capacity to adjust aspects of their speaking voice in a manner that facilitates clear, effective and efficient communication.</CommonCoreOntologies:definition>
+        <rdfs:comment>Note that these classes may overlap in their instances. Thus, an instance of Speech Adjustment Skill can be a Public Teaching Skill insofar as it facilitates good public speaking.</rdfs:comment>
+        <rdfs:label>Speech Adjustment Skill</rdfs:label>
+        <rdfs:seeAlso>https://www.indeed.com/career-advice/resumes-cover-letters/communication-skills</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speech_Tone_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speech_Tone_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speech_Adjustment_Skill"/>
+        <rdfs:label>Speech Tone Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speech_Volume_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speech_Volume_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Speech_Adjustment_Skill"/>
+        <CommonCoreOntologies:definition>A Speech Adjustment Skill which the speaker realizes to the extent of their capability to adjust the loudness of their voice in a variety of settings in a manner that is clear and audible but also appropriate to the settings.</CommonCoreOntologies:definition>
+        <rdfs:comment>Speech volume control is not just about being clear and audible. This is the reason for the last clause &apos;but also appropriate to the settings&apos; Thus, speaking very loudly may be awkward or disrespectful in certain settings. Not sure how to pack more into the definition to elicit this more clearly without making it to long and clunky. May just have to settle for an &apos;elucidation&apos; annotation. 
+
+Indeed, I think that there will often be a need to support Aristotelian definitions with elucidations for the purpose of this domain. But that&apos;s the great thing about having separate annotation types!
+
+As for the label, I say &apos;Speech Volume Skill&apos; since a sound technician may have skill in adjusting the loudness of a given sound (perhaps a recording of someone&apos;s else speaking). But that is not the skill we have in mind here.</rdfs:comment>
+        <rdfs:label>Speech Volume Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>A Nonpermanent Appointment Action where the Person&apos;s assigned job or position is limited to a specified time period of one year or less.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.govinfo.gov/content/pkg/CFR-2020-title5-vol1/xml/CFR-2020-title5-vol1-part316.xml#seqnum316.401
+
+https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf;
+ https://www.opm.gov/policy-data-oversight/hiring-information/competitive-hiring/#:~:text=Temporary%20appointments%20are%20defined%20as,Term%20Appointment%20%2D%20Time%20limited%20more</CommonCoreOntologies:definition_source>
+        <CommonCoreOntologies:elucidation>Elucidation of Logical Definition
+
+A Temporal Appointment Action results in the Employee serving in an appointment that is only expected to last for a specified period of time lasting one year or less. The logical axiom thus says that the appointment results in the Employee serving in an appointment (the Act of Employment) that occurs over a Temporary Appointment Period. A Temporary Appointment Period is a one-dimensional temporal region that spans one year or less. It is a defined class which has its own axiomatization.</CommonCoreOntologies:elucidation>
+        <CommonCoreOntologies:elucidation>The time period of a temporory appointment is not to exceed a specified Calendar Day occurring one year or less after their initial Date of appointment. For instance, when a Person is first appointed on January 15, 2024 and the subsequent duration of their appointment is not to exceed October 15, 2024. A Temporary Appointment Action is designated by an OPM Appointment Not-to-exeed (date) Nature of Action Identifier. The Nature of Action Identifer for such an appointment  will contain a Calendar Date Identifier designating the Day that the appointment is not to exceed, e.g. &apos;Appointment Not-To- Exceed October 15, 2024&apos;
+
+Should perhaps say: &quot;after their Effective Date of appointment&quot;</CommonCoreOntologies:elucidation>
+        <rdfs:comment>Note that per U.S. Code, Title 5, Pt. 316, Subpart D—Temporary Limited Employment § 316.401(c): An Agency may extend a temporary appointment up to a maximum of 1 additional year (24 months of total service). https://www.govinfo.gov/content/pkg/CFR-2020-title5-vol1/xml/CFR-2020-title5-vol1-part316.xml#seqnum316.401</rdfs:comment>
+        <rdfs:comment>To do: 
+
+This may only be applicable to Competitive Service Appointments in which case this needs to be given a more specific name.</rdfs:comment>
+        <rdfs:label>Temporary Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Period_of_Appointment"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/interval_equals"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarYear"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>A Period of Appointment measured in Months or Years that spans one Calendar Year or less.</CommonCoreOntologies:definition>
+        <rdfs:comment>This is a defined class.</rdfs:comment>
+        <rdfs:label>Temporary Appointment Period</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Overseas_Limited_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Overseas_Limited_Appointment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>This is an inferred subclass of Temporary Appointment Action</rdfs:comment>
+        <rdfs:label>Temporary Overseas Limited Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action"/>
+        <rdfs:label>Term Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Period -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Period">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Period_of_Appointment"/>
+        <CommonCoreOntologies:definition>A Period of Appointment that is the duration of some Term Appointment.</CommonCoreOntologies:definition>
+        <rdfs:label>Term Appointment Period</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#US_OPM_Nature_of_Action_Code -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#US_OPM_Nature_of_Action_Code">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/CodeIdentifier"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Identifier"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>A Code Identifier consisting of a unique numerical code, which identifies some particular OPM Nature of Action Identifier for statistical and data processing purposes.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf</CommonCoreOntologies:definition_source>
+        <rdfs:comment>Each OPM Nature of Action Code is a numerical string consisting of 3 digits. Strings range 000 to 999. 
+
+The first digit of each code indicates the action type of the action that is described by the corresponding OPM Nature of Action Information Content Entity. For example, for 100 series codes (100-199), &apos;1&apos; indicates that the action type is appointments.
+
+The second and third digits of each code indicates the particular kind of action, for example &apos;promotion&apos;, &apos;resignation&apos;, etc. 
+
+See pg. 5 of: https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf</rdfs:comment>
+        <rdfs:label>OPM Nature of Action Code</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Verbal_Communication_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Verbal_Communication_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Communication_Skill"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Verbal_Communication"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Communication Skill that is realized in Acts of Verbal Communication that convey information clearly, effectively, and efficiently.</CommonCoreOntologies:definition>
+        <rdfs:label>Verbal Communication Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Voluntary_Attrition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Voluntary_Attrition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Employee_Attrition"/>
+        <CommonCoreOntologies:definition>A reduction in workforce that occurs as a result of employees voluntary leaving an organization, either to pursue other employment or via retirement or resignation.
+
+An Employee Attrition in which the workforce of an Organization is reduced as a result of employees voluntary leaving the Organization, either to pursue other employment or via retirement or resignation.</CommonCoreOntologies:definition>
+        <rdfs:comment>&quot;Voluntary attrition occurs when employees leave a company of their own volition.&quot;
+
+Can occur when employees leave for other employment, or they retire.
+
+What does &apos;occurs when&apos; mean here exactly? It seems to me that voluntary attrition is what happens as a result of employees leaving of their own volition. In that case, there are two ways to view this:
+
+&apos;voluntary attrition&apos; is one process
+             and
+the voluntary leaving of the employees is another. 
+
+It is a reduction in staff numbers that is caused by another process.
+
+Or: 
+Voluntary attrition is a process including the employees leaving as a part.
+
+The first option seems more natural to me. But it doesn&apos;t gel well with the deliberate downsizing sense of &apos;attrition&apos; that is carried out by HR.</rdfs:comment>
+        <rdfs:label>Voluntary Attrition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Writing_Skill -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Writing_Skill">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Verbal_Communication_Skill"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Act_of_Written_Communication"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000232>When one says that Shakespeare is a skilled writer, one is not using &apos;writing skill&apos; in the same sense as it is used here. For that reason, I prefer the term &apos;Written Communication Skill&apos;. That said, amongst prospective users and consumers of the ontology, &apos;writing skill&apos; is the more familiar term.</obo:IAO_0000232>
+        <CommonCoreOntologies:alternative_label>Writing Skill</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:definition>A Verbal Skill that is realized in Acts of Written Communication that convey information clearly, effectively, and efficiently.</CommonCoreOntologies:definition>
+        <rdfs:label>Written Communication Skill</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#US_OPM_Nature_of_Action_Code"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>An OPM Nature of Action Code which identifies some Appointment NOA Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf</CommonCoreOntologies:definition_source>
+        <rdfs:label>100 Series Nature of Action Code</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Not-to-exceed_(date)_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Not-to-exceed_(date)_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_115"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Not-to-exceed_(date)_Identifier"/>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Calendar Date Identifier as a part and designates a Temporary Appointment Action where the time period of the appointment is not to exceed the Calendar Day designated by the Calendar Date Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.govinfo.gov/content/pkg/CFR-2020-title5-vol1/xml/CFR-2020-title5-vol1-part316.xml#seqnum316.401
+
+https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
+
+https://dw.opm.gov/datastandards/referenceData/1487/current</CommonCoreOntologies:definition_source>
+        <CommonCoreOntologies:elucidation>A Term Appointment Not-to-exceed (date) Identifier consists of the string &apos;Term Appointment Not-to exceed&apos; followed by a Calendar Date Identifier. Term appointments are appointments limited to a specified time period lasting at least more than one year, but no more than 4 years. Thus, the Calendar Date Identifier designates a Calendar Date occurring at least more than one year after, but no more than 4 years after, the initial Date of appointment. The length of the appointment is therefore not to exceed the designated Calendar Date.</CommonCoreOntologies:elucidation>
+        <CommonCoreOntologies:elucidation>An Appointment Not-to-exceed (date) Identifier consists of the string &apos;Appointment Not-to-exceed&apos; followed by some Calendar Date Identifier. Temporary Appointments are appointments limited to a specified time period of one year or less. Thus, the Calendar Date Identifier designates a Calendar Day occuring one year or less after the initial Date of appointment. The length of the appointment is therefore not to exceed the designated Calendar Day.
+
+Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apos;.</CommonCoreOntologies:elucidation>
+        <CommonCoreOntologies:example_of_usage>&quot;Appointment Not-to-exceed October 31, 2024&quot;</CommonCoreOntologies:example_of_usage>
+        <rdfs:label>Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Status,_Competitive_Service -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Status,_Competitive_Service">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Status"/>
+        <CommonCoreOntologies:definition>A Career Status that inheres in a Competitive Service Federal Employee by virtue of the fact the Employee has completed a requirement of 3 years of continuous creditable Federal Service.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/hiring-information/competitive-hiring/#:~:text=Temporary%20appointments%20are%20defined%20as,Term%20Appointment%20%2D%20Time%20limited%20more [Types of Appointment (Status)]</CommonCoreOntologies:definition_source>
+        <rdfs:label>Career Status, Competitive Service</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Status,_Excepted_Service -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Status,_Excepted_Service">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Status"/>
+        <CommonCoreOntologies:definition>A Career Status that inheres in a Federal Employee of the Office of the Comptroller of the Currency by virtue of the fact the Employee has completed a requirement of 1 year of continuous creditable Federal Service.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://home.treasury.gov/about/careers-at-treasury/how-to-apply/glossary</CommonCoreOntologies:definition_source>
+        <rdfs:label>Career Status, Excepted Service</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Not-To-Exceed_(Date)_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Not-To-Exceed_(Date)_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Overseas_Limited_Appointment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Calendar Date Identifier as a part and designates a Temporary Overseas Limited Appointment where the period of appointment is not to exceed the Calendar Day designated by the Calendar Date Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Overseas Limited Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment_Not-To-Exceed_(date)_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment_Not-To-Exceed_(date)_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Calendar Date Identifier as a part and designates a Provisional Appointment where the time period of the appointment is not to exceed the Calendar Day designated by the Calendar Date Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Provisional Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Service_Limited_Term_Appointment_Not-To-Exceed_(Date)_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Service_Limited_Term_Appointment_Not-To-Exceed_(Date)_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_148"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Senior Executive Service Limited Term Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Not-to-exceed_(date)_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Not-to-exceed_(date)_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_108"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Term_Appointment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Calendar Date Identifier as a part and designates a Term Appointment where time period of the appointment is not to exceed the Calendar Date designated by the Calendar Date Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/hiring-information/competitive-hiring/ [see in particular &apos;Types of Appointment (Status)&apos;]; https://dw.opm.gov/datastandards/referenceData/1487/current; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf</CommonCoreOntologies:definition_source>
+        <rdfs:label>Term Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
