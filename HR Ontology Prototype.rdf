@@ -69,6 +69,15 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/pr#lacks_part -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/pr#lacks_part">
+        <CommonCoreOntologies:definition>A negation of the has_part relation. [database_cross_reference: PRO:DAN]</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:is_curated_in_ontology>http://purl.obolibrary.org/obo/pr.owl</CommonCoreOntologies:is_curated_in_ontology>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#appointment_not_to_exceed_date -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#appointment_not_to_exceed_date">
@@ -308,7 +317,44 @@ Notice that the overall goal is to eliminate misunderstandings and establish cle
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <CommonCoreOntologies:definition>A Nature of Action Identifier that designates some Appointment Personnel Action taken by an Agency.</CommonCoreOntologies:definition>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Nature of Action Identifier that designates some [].
+
+Not really sure how to define this now. This class of NOAs, corresponding to 100 series nature of action codes, covers appointments, reinstatements, and transfers. It does not cover conversions to appointments (from other appointments)--those fall under 500 series codes.
+
+Chapter 13 of the OPM Guide to Personnel Actions seemingly distinguishes appointments from conversions: &quot;2. Definitions.
+a. An appointment establishes an 
+individual as an employee of the agency.
+b. A conversion changes an employee 
+from one appointment to another 
+appointment in the same agency without a 
+break in service (for example, from the 
+competitive service to the Senior Executive 
+Service, from a Senior Executive Service 
+Noncareer to a Senior Executive Service 
+Career Appointment or vice versa, or from 
+the excepted service to the Senior Executive 
+Service).&quot;
+
+This seems to restrict appointments to cases where a non-employee becomes an employee of an agency.
+
+But this clearly conflicts with the use of appointment in Chapter 9:
+
+&quot;1. Coverage 
+This chapter covers permanent appointments in the competitive 
+service by: 
+a. appointment from a civil service certificate or under a direct hire 
+recruiting authority or special authority; 
+b. conversion or change of appointment, under either the same or 
+a different authority, in the same agency without a break in 
+service;&quot;
+
+Which implies that conversion is a type of appointing.</CommonCoreOntologies:definition>
         <CommonCoreOntologies:elucidation>Appointment NOA Identifiers are designated by 100 Series Nature of Action Codes.</CommonCoreOntologies:elucidation>
         <rdfs:label>Appointment NOA Identifier</rdfs:label>
     </owl:Class>
@@ -362,11 +408,17 @@ Should be defined as a reduction in the number of members of some Organization, 
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career-Conditional_Appointment_Action"/>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_101"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Career-Conditional Appointment Action taken by an Agency.</CommonCoreOntologies:definition>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Career-Conditional_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Competitive Services Career-Conditional Appointment Action taken by an Agency.</CommonCoreOntologies:definition>
         <rdfs:label>Career-Conditional Appointment Identifier</rdfs:label>
     </owl:Class>
     
@@ -376,7 +428,7 @@ Should be defined as a reduction in the number of members of some Organization, 
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Permanent_Appointment_Action"/>
-        <CommonCoreOntologies:definition>A Permanent Appointment Action where an Employee is assigned to job or position wherein the Employee bears some Career Status.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>A Permanent Appointment Action where an Agency establishes some Person, who is not yet on its rolls, as one of its Employees by assigning that Person to a job or position wherein they bear some Career Status.</CommonCoreOntologies:definition>
         <rdfs:comment>To do create an employment class, Career Employment, which is equivalent to employment where the employee has Career Status.
 
 Career Status is a quality (?) that inheres in the Employee by virtue of the fact that the employee has completed a required number of years of substantially continuous Federal service (this number differs between the Competitive and Exceptive Services). https://home.treasury.gov/about/careers-at-treasury/how-to-apply/glossary</rdfs:comment>
@@ -391,11 +443,18 @@ Career Status is a quality (?) that inheres in the Employee by virtue of the fac
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action"/>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_100"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Career Appointment Action taken by an Agency.</CommonCoreOntologies:definition>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Career_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Competitive Services Career Appointment Action taken by an Agency.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://dw.opm.gov/datastandards/referenceData/1487/current; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf</CommonCoreOntologies:definition_source>
         <rdfs:label>Career Appointment Identifier</rdfs:label>
     </owl:Class>
     
@@ -478,12 +537,35 @@ Example: friendliness, respectfulness.
     
 
 
-    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Service_Career_Appointment_Action -->
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Career-Conditional_Appointment_Action -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Service_Career_Appointment_Action">
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Career-Conditional_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career-Conditional_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Career-Conditional Appointment Action where the Employee is assigned to a job or position, with Career-Conditional Status, in the Competitve Services.</CommonCoreOntologies:definition>
+        <rdfs:label>Competitive Services Career-Conditional Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Career_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Career_Appointment_Action">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action"/>
-        <CommonCoreOntologies:definition>A Career Appointment Action where the Employee is assigned to a job or position, with Career Status, in the Competitve Services.</CommonCoreOntologies:definition>
-        <rdfs:label>Competitive Service Career Appointment Action</rdfs:label>
+        <CommonCoreOntologies:definition>A Career Appointment Action where the Person is assigned to a job or position, with Career Status, in the Competitve Services.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/hiring-information/competitive-hiring/#:~:text=Temporary%20appointments%20are%20defined%20as,Term%20Appointment%20%2D%20Time%20limited%20mor</CommonCoreOntologies:definition_source>
+        <rdfs:label>Competitive Services Career Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Conversion_to_Career_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Conversion_to_Career_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Career_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Conversion to Career Appointment Action where an Employee of Agency, without a break in service, is changed from a non-Career Status appointment to a Career Status appointment in the Competitive Services.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa09.pdf</CommonCoreOntologies:definition_source>
+        <rdfs:comment>Not sure about this case, but in the case of sibling classes, conversion can be from an appointment within an Agency in one service type to another appointment in a different service type (e.g. from Excepted to Senior Executive).</rdfs:comment>
+        <rdfs:label>Competitive Services Conversion to Career Appointment</rdfs:label>
     </owl:Class>
     
 
@@ -555,6 +637,144 @@ A Term Appointment Action results in the Employee serving in an appointment that
         <CommonCoreOntologies:definition>A Speaking Skill that is realized in Acts of Spoken Communication that exhibit a feeling of confidence.</CommonCoreOntologies:definition>
         <rdfs:comment>The label is clunky. But I would distinguish this skill from the emotion or feeling of confidence that is involved in the skill.</rdfs:comment>
         <rdfs:label>Confidence in Speech</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Appointment_NOA_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Appointment_NOA_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Identifier"/>
+        <CommonCoreOntologies:definition>A Nature of Action Identifer that designates some Personnel Action in which an Employee of an Agency who is serving in some appointment is changed to another appointment within that same Agency.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa09.pdf [see 1. Coverage]; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf [see 2. Definitions]; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa13.pdf [see 2 Definitions]</CommonCoreOntologies:definition_source>
+        <rdfs:label>Conversion to Appointment NOA Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Career_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Career_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Permanent_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Permanent Appointment Action where an Employee of an Agency who is serving in a non-Career Status appointment is changed, under either the same or a different authority, to a Career Status appointment within that same Agency.</CommonCoreOntologies:definition>
+        <rdfs:label>Conversion to Career Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Career_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Career_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_500"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Conversion_to_Career_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Conversion to Appointment NOA Identifer that designates some Competitive Services Conversion to Career Appointment.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa09.pdf</CommonCoreOntologies:definition_source>
+        <rdfs:label>Conversion to Career Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Emergency_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Emergency_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action_Without_Time_Limitation"/>
+        <CommonCoreOntologies:definition>An Indefinite Nonpermanent Appointment Action where an Agency changes one of its Employees to a new appointment, without regard to any regulation or instruction of the Office of Personnel Management except those which become effective upon or following an attack on the United States, to the extent that this action is deemed necessary to that Agency&apos;s effective functioning during a national emergency disaster.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
+
+https://www.ecfr.gov/current/title-5/chapter-I/subchapter-B/part-230/subpart-D</CommonCoreOntologies:definition_source>
+        <rdfs:label>Conversion to Emergency Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Emergency_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Emergency_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/pr#lacks_part"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_507"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Emergency_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Conversion to Appointment NOA Identifier that designates some Conversion to Emergency Appointment Action.</CommonCoreOntologies:definition>
+        <rdfs:label>Conversion to Emergency Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Excepted_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Excepted_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/pr#lacks_part"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_570"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Indefinite_Excepted_Services_Appointment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Conversion to Appointment NOA Identifier that designates some Conversion to Indefinite Excepted Services Appointment.</CommonCoreOntologies:definition>
+        <rdfs:label>Conversion to Excepted Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Indefinite_Excepted_Services_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Indefinite_Excepted_Services_Appointment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action_Without_Time_Limitation"/>
+        <CommonCoreOntologies:definition>An Indefinite Nonpermanent Appointment Action where an Employee currently serving in one appointment within an Agency is changed to an Excepted Services appointment in that same Agency, the duration of which lacks a definite time limit and not-to-exceed-date.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf [See Table 11-A and Table 11-B]</CommonCoreOntologies:definition_source>
+        <rdfs:comment>This includes conversions from appointments in other service types, such as conversion from appointments in the Senior Executive Services to indefinite Excepted Services appointments. [See Table 11-A, Rules 12-14: https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf]</rdfs:comment>
+        <rdfs:label>Conversion to Indefinite Excepted Services Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Provisional_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Provisional_Appointment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Temporary Appointment Action where an Agency assigns a current Employee to a continuing position, on a temporary basis, with the intention of later converting the employee to a nontemporary appointment and that Agency has current authority to make such a conversion.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf
+[In both chapters, under Definitions] [Chapter 10, Table 10-C] [Chapter 11, Table 11-A]</CommonCoreOntologies:definition_source>
+        <CommonCoreOntologies:elucidation>Technically, a continuing position is intended to be a nonpermanent position that has no specified end date. Provisional appointments are where an employee is assigned to such a position on a temporary basis in cases where the position must be filled more quickly than would be possible under the procedures required for nontemporary appointment. See https://www.law.cornell.edu/cfr/text/5/316.403</CommonCoreOntologies:elucidation>
+        <rdfs:label>Conversion to Provisional Appointment</rdfs:label>
     </owl:Class>
     
 
@@ -632,12 +852,12 @@ it is seemingly implied that downsizing and layoffs go together. But is &apos;em
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Emergency_Appointment_Action -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Emergency_Appointment_Action">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action"/>
-        <rdfs:comment>An Emergency Appointment is an indefinite appointment made in a national emergency, as defined in 5 CFR part 230, subpart D.
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action_Without_Time_Limitation"/>
+        <CommonCoreOntologies:definition>An Indefinite Nonpermanent Appointment Action where an Agency assigns some Person, who is not yet on its rolls, to a position within that Agency without regard to any regulation or instruction of the Office of Personnel Management except those which become effective upon or following an attack on the United States, to the extent that this action is deemed necessary to that Agency&apos;s effective functioning during a national emergency disaster.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
 
-https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
-
-https://www.ecfr.gov/current/title-5/chapter-I/subchapter-B/part-230/subpart-D</rdfs:comment>
+https://www.ecfr.gov/current/title-5/chapter-I/subchapter-B/part-230/subpart-D</CommonCoreOntologies:definition_source>
+        <rdfs:comment>An Emergency Appointment is an indefinite appointment made in a national emergency, as defined in 5 CFR part 230, subpart D.</rdfs:comment>
         <rdfs:label>Emergency Appointment Action</rdfs:label>
     </owl:Class>
     
@@ -718,11 +938,42 @@ So, if company had an average of 250 employees over the course of a year, and 50
     
 
 
-    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Service_Career_Appointment_Action -->
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Appointment_Identifier -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Service_Career_Appointment_Action">
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/pr#lacks_part"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_170"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Indefinite_Excepted_Services_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that lacks a Not To Exceed Date Identifier and designates the appointment of a Person to a nonpermanent position in the Excepted Services the duration of which lacks a definite time limit.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf
+[Table 11A, and Table 11C, Rule 11]</CommonCoreOntologies:definition_source>
+        <rdfs:label>Excepted Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Services_Career_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Services_Career_Appointment_Action">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action"/>
-        <rdfs:label>Excepted Service Career Appointment Action</rdfs:label>
+        <CommonCoreOntologies:definition>A Career Appointment Action where the Person is assigned to a job or position, with Career Status, in the Excepted Services.</CommonCoreOntologies:definition>
+        <rdfs:label>Excepted Services Career Appointment Action</rdfs:label>
     </owl:Class>
     
 
@@ -817,6 +1068,44 @@ HR departments are responsible for overseeing:
     
 
 
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Indefinite_Excepted_Services_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Indefinite_Excepted_Services_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action_Without_Time_Limitation"/>
+        <CommonCoreOntologies:definition>An Indefinite Nonpermanent Appointment Action where an Agency establishes some Person, who is not yet on its rolls, as one of its Employees by assigning that Person to an Excepted Services position the duration of which lacks a definite time limit and not-to-exceed-date.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf
+[Table 11A, and Table 11C, Rule 11]</CommonCoreOntologies:definition_source>
+        <rdfs:label>Indefinite Excepted Services Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Indefinite_Overseas_Limited_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Indefinite_Overseas_Limited_Appointment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/pr#lacks_part"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Overseas Limited Appointment in which the Person is assigned to a position the duration of which lacks a definite time limit and not-to-exceed date.</CommonCoreOntologies:definition>
+        <rdfs:label>Indefinite Overseas Limited Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Industry_Conference -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Industry_Conference">
@@ -829,6 +1118,26 @@ HR departments are responsible for overseeing:
         </rdfs:subClassOf>
         <rdfs:comment>Placeholder class. Ultimately there would be a number of superclasses between it and Act of Meeting.</rdfs:comment>
         <rdfs:label>Industry Conference</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Interim_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Interim_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:comment>I can&apos;t find any discussion of this in any of the chapters available from the OPM Guide to Processing Personnel Actions. https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/toc.pdf</rdfs:comment>
+        <rdfs:label>Interim Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Interim_Appointment_in_Nonduty_Status_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Interim_Appointment_in_Nonduty_Status_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:comment>I can&apos;t find any discussion of this in any of the chapters available from the OPM Guide to Processing Personnel Actions. https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/toc.pdf</rdfs:comment>
+        <rdfs:label>Interim Appointment in Nonduty Status Identifier</rdfs:label>
     </owl:Class>
     
 
@@ -941,6 +1250,22 @@ So, COBRA has part some Action Prohibition
     
 
 
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_100 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_100">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;100&apos;, which designates some Career Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 100</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_101 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_101">
@@ -983,7 +1308,7 @@ So, COBRA has part some Action Prohibition
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Not-to-exceed_(date)_Identifier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;108&apos;, which designates some Term Appointment Not-to-exceed (date) Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;108&apos;, which designates some Term Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition>
         <rdfs:label>Nature of Action Code 108</rdfs:label>
     </owl:Class>
     
@@ -999,7 +1324,7 @@ So, COBRA has part some Action Prohibition
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Not-to-exceed_(date)_Identifier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;115&apos;, which designates some Appointment Not-to-exceed (date) Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;115&apos;, which designates some Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition>
         <rdfs:label>Nature of Action Code 115</rdfs:label>
     </owl:Class>
     
@@ -1037,6 +1362,22 @@ So, COBRA has part some Action Prohibition
     
 
 
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_142 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_142">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Career_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;142&apos;, which designates some Senior Executive Services Career Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 142</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_148 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_148">
@@ -1047,7 +1388,40 @@ So, COBRA has part some Action Prohibition
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Service_Limited_Term_Appointment_Not-To-Exceed_(Date)_Identifier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;148&apos;, which designates some Senior Executive Services Limited Term Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition>
         <rdfs:label>Nature of Action Code 148</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_170 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_170">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;170&apos;, which designates some Excepted Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 170</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_171 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_171">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Appointment_Not-To-Exceed_(Date)_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition_source>A 100 Series Nature of Action Code, consisting of the string &apos;171&apos;, which designates some Excepted Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition_source>
+        <rdfs:label>Nature of Action Code 171</rdfs:label>
     </owl:Class>
     
 
@@ -1064,6 +1438,106 @@ So, COBRA has part some Action Prohibition
         </rdfs:subClassOf>
         <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;190&apos;, which designates some Provisional Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition>
         <rdfs:label>Nature of Action Code 190</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_198 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_198">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;198&apos;, which designates some Interim Appointment in Nonduty Status Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 198</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_199 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_199">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#100_Series_Nature_of_Action_Code"/>
+        <CommonCoreOntologies:definition>A 100 Series Nature of Action Code, consisting of the string &apos;199&apos;, which designates some Interim Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 199</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_500 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_500">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#500_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Career_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 500 Series Nature of Action Code, consisting of the string &apos;500&apos;, which designates some Conversion to Career Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 500</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_507 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_507">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#500_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Emergency_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 500 Series Nature of Action Code, consisting of the string &apos;507&apos;, which designates some Conversion to Emergency Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 507</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_570 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_570">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#500_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Excepted_Appointment_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 500 Series Nature of Action Code, consisting of the string &apos;570&apos;, which designates some Conversion to Excepted Appointment Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 570</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_571 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_571">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#500_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Excepted_Appointment_Not-To-Exceed_(Date)_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition_source>A 500 Series Nature of Action Code, consisting of the string &apos;571&apos;, which designates some Conversion to Excepted Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition_source>
+        <rdfs:label>Nature of Action Code 571</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_590 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_590">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#500_Series_Nature_of_Action_Code"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Provisional_Appointment_Not-To-Exceed_(Date)_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A 500 Series Nature of Action Code, consisting of the string 590, which designates some Conversion to Provisional Appointment Not-To-Exceed (Date) Identifier.</CommonCoreOntologies:definition>
+        <rdfs:label>Nature of Action Code 590</rdfs:label>
     </owl:Class>
     
 
@@ -1117,9 +1591,51 @@ Relate to CCO Action Permission?</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Action"/>
-        <CommonCoreOntologies:definition>An Appointment Action where a Person is assigned to a job or position that is expected to last for a limited, specified time period.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>An Appointment Action where a Person is assigned to a job or position that is nonpermanent..</CommonCoreOntologies:definition>
         <rdfs:comment>Add subclass axiom representing the fact that temporary appointments do not confer upon the employee &apos;Competitive Status&apos;.</rdfs:comment>
         <rdfs:label>Nonpermanent Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action_Without_Time_Limitation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action_Without_Time_Limitation">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/pr#lacks_part"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action"/>
+        <CommonCoreOntologies:alternative_label>Nonpermanent Appointment Action Without Time Limitation</CommonCoreOntologies:alternative_label>
+        <CommonCoreOntologies:definition>A Nonpermanent Appointment Action where the Person is assigned to a job or position the duration of which lacks a definite time limit and not-to-exceed date.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf
+[See Table 11C, under Rule 11; though admittedly it would be better if we can find a more general definition source as well. Whereas this source is from the chapter on Excepted Service appointments in the OPM Guide to Processing Personnel Actions]</CommonCoreOntologies:definition_source>
+        <rdfs:comment>This is meant to capture appointment to nonpermanent positions, where the duration of the appointment is indefinite. One where the appointment is made on an indefinite basis.
+
+Certain instances of Overseas Limited Appointment fall under this class. But other instances of Overseas Limited Appointment fall under Temporary Appointment Action. Therefore, Overseas Limited Appointment could not be asserted as a child of either this class, nor Time Limited Appointment Action.</rdfs:comment>
+        <rdfs:label>Indefinite Nonpermanent Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+        <rdfs:comment>Time Limited Apppointments have a &apos;not to exceed date&apos;, meaning that the duration of the appoinment is not to exceed that date. This class represents a Calendar Date Identifier which designates the Calendar Day on which the appointment is to be terminated.</rdfs:comment>
+        <rdfs:label>Not To Exceed Date Identifier</rdfs:label>
     </owl:Class>
     
 
@@ -1241,7 +1757,8 @@ https://www.indeed.com/career-advice/career-development/example-of-training-prog
 Guide to Processing Personnel Actions, Chapter 10, Section 2(g)</CommonCoreOntologies:definition_source>
         <CommonCoreOntologies:elucidation>&quot;The appointments can be made (1) on an indefinite basis, (2) for a term or period not-to-exceed 5 years under programs for rotating career and career-conditional employees between overseas areas and the United States or (3) on a temporary limited basis for a period not-to-exceed one year.&quot; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
 
-Notice that instances of case (3) would fall under &apos;Appointment Not To Exceed&apos;. But that class is not limited to Oversees Limited Appointments.</CommonCoreOntologies:elucidation>
+Notice that instances of case (3) would fall under &apos;Temporary Appointment Action&apos;. But that class is not limited to Oversees Limited Appointments.</CommonCoreOntologies:elucidation>
+        <rdfs:comment>This class cannot be a child of &apos;Time Limited Appointment Action&apos; because some Overseas Limited Appoinments are made on an indefinite basis.</rdfs:comment>
         <rdfs:label>Overseas Limited Appointment</rdfs:label>
     </owl:Class>
     
@@ -1251,6 +1768,12 @@ Notice that instances of case (3) would fall under &apos;Appointment Not To Exce
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Identifier">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_120"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
@@ -1345,8 +1868,11 @@ Add axiom for this class: prohibited by  5 USC § 2302(b))</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action"/>
-        <CommonCoreOntologies:definition>A Temporary Appointment Action where an Agency assigns an employee to a continuing position with the intention of later converting the employee to a nontemporary appointment and that Agency has current authority to make such a conversion.</CommonCoreOntologies:definition>
-        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf</CommonCoreOntologies:definition_source>
+        <CommonCoreOntologies:definition>A Temporary Appointment Action where an Agency establishes some Person, who is not yet on its rolls, as one of its Employees by assigning that Person to a continuing position, on a temporary basis, with the intention of later converting them to a nontemporary appointment and that Agency has current authority to make such a conversion.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf
+[In both chapters, under Definitions]</CommonCoreOntologies:definition_source>
+        <CommonCoreOntologies:elucidation>Technically, a continuing position is intended to be a nonpermanent position that has no specified end date. Provisional appointments are where a Person is assigned to such a position on a temporary basis in cases where the position must be filled more quickly than would be possible under the procedures required for nontemporary appointment. See https://www.law.cornell.edu/cfr/text/5/316.403</CommonCoreOntologies:elucidation>
+        <rdfs:comment>While documentation does describe this as a temporary appointment, I am not absolutely sure, complex reasons, that this is a subclass of Temporary Appointment Action.</rdfs:comment>
         <rdfs:label>Provisional Appointment</rdfs:label>
     </owl:Class>
     
@@ -1390,6 +1916,47 @@ Add axiom for this class: prohibited by  5 USC § 2302(b))</rdfs:comment>
         <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/senior-executive-service/reference-materials/guidesesservices.pdf (under Limited Appointments)
 https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa13.pdf (see Table 13A)</CommonCoreOntologies:definition_source>
         <rdfs:label>Senior Executive Service Limited Term Appointment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Career_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Career_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Career_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Career Appointment Action where the Person is assigned to a job or position, with Career Status, in the Senior Executive Services.</CommonCoreOntologies:definition>
+        <rdfs:label>Senior Executive Services Career Appointment Action</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Career_Appointment_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Career_Appointment_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_142"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Career_Appointment_Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that designates some Senior Executive Services Career Appointment Action taken by an Agency.</CommonCoreOntologies:definition>
+        <rdfs:label>Senior Executive Services Career Appointment Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Conversion_to_Career_Appointment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Services_Conversion_to_Career_Appointment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Career_Appointment_Action"/>
+        <rdfs:label>Senior Executive Services Conversion to Career Appointment</rdfs:label>
     </owl:Class>
     
 
@@ -1472,27 +2039,23 @@ As for the label, I say &apos;Speech Volume Skill&apos; since a sound technician
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action">
         <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
-                        <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
-                                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period"/>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
         </owl:equivalentClass>
-        <CommonCoreOntologies:definition>A Nonpermanent Appointment Action where the Person&apos;s assigned job or position is limited to a specified time period of one year or less.</CommonCoreOntologies:definition>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Time Limited Appointment Action where the Person&apos;s assigned job or position is limited to a specified time period of one year or less.</CommonCoreOntologies:definition>
         <CommonCoreOntologies:definition_source>https://www.govinfo.gov/content/pkg/CFR-2020-title5-vol1/xml/CFR-2020-title5-vol1-part316.xml#seqnum316.401
 
 https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf;
@@ -1537,23 +2100,28 @@ This may only be applicable to Competitive Service Appointments in which case th
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Overseas_Limited_Appointment -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Overseas_Limited_Appointment">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/is_cause_of"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/ActOfEmployment"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000199"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Period"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>An Overseas Limited Appointment where the Person&apos;s job or position is limited to a specified time period of one year or less.</CommonCoreOntologies:definition>
         <rdfs:comment>This is an inferred subclass of Temporary Appointment Action</rdfs:comment>
         <rdfs:label>Temporary Overseas Limited Appointment</rdfs:label>
     </owl:Class>
@@ -1563,7 +2131,7 @@ This may only be applicable to Competitive Service Appointments in which case th
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Action -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Action">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action"/>
         <rdfs:label>Term Appointment Action</rdfs:label>
     </owl:Class>
     
@@ -1575,6 +2143,26 @@ This may only be applicable to Competitive Service Appointments in which case th
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Period_of_Appointment"/>
         <CommonCoreOntologies:definition>A Period of Appointment that is the duration of some Term Appointment.</CommonCoreOntologies:definition>
         <rdfs:label>Term Appointment Period</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nonpermanent_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Nonpermanent Appointment Action where the Person is assigned to a job or position the duration of which is limited to a specified period with a not-to-exceed date.</CommonCoreOntologies:definition>
+        <rdfs:comment>In Chapter 11 of OPM&apos;s Guide Processing Personnel Actions -- which deals with appointments in the Excepted Services -- under Definitions on page 2, it says:
+&quot;TIME LIMITED APPOINTMENT—A non-permanent appointment
+made for more than 1 year.&quot; [https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf]
+-This would exclude Temporary Appointments, which according to U.S. code, are 1 year or less.
+
+But it seems clear to me that OPM uses &apos;time limited appointment&apos; more broadly in most places.
+For example,
+Chapter 10 of OPM&apos;s Guide to Processing Personnel Actions [https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf] is said to cover all competitive services appointments that are time limited, where this include temporary appointments of one year or less. 
+
+So, the use of &apos;Time Limited Appointment&apos; in Chapter 11 appears to me to be a specialized usage. This class represents the broader usage of the term.</rdfs:comment>
+        <rdfs:label>Time Limited Appointment Action</rdfs:label>
     </owl:Class>
     
 
@@ -1690,6 +2278,27 @@ The first option seems more natural to me. But it doesn&apos;t gel well with the
     
 
 
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#500_Series_Nature_of_Action_Code -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#500_Series_Nature_of_Action_Code">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#US_OPM_Nature_of_Action_Code"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Appointment_NOA_Identifier"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <CommonCoreOntologies:definition>An OPM Nature of Action Code which identifies some Conversion to Appointment NOA Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf</CommonCoreOntologies:definition_source>
+        <rdfs:label>500 Series Nature of Action Code</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Not-to-exceed_(date)_Identifier -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_Not-to-exceed_(date)_Identifier">
@@ -1697,7 +2306,7 @@ The first option seems more natural to me. But it doesn&apos;t gel well with the
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1709,21 +2318,32 @@ The first option seems more natural to me. But it doesn&apos;t gel well with the
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Term_Appointment_Not-to-exceed_(date)_Identifier"/>
-        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Calendar Date Identifier as a part and designates a Temporary Appointment Action where the time period of the appointment is not to exceed the Calendar Day designated by the Calendar Date Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Not To Exceed Date Identifier as a part and designates a Temporary Appointment in the Competitive Services where the duration of the appointment is not to exceed the Calendar Day designated by the Not To Exceed Date Identifier.</CommonCoreOntologies:definition>
         <CommonCoreOntologies:definition_source>https://www.govinfo.gov/content/pkg/CFR-2020-title5-vol1/xml/CFR-2020-title5-vol1-part316.xml#seqnum316.401
 
 https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa10.pdf
 
 https://dw.opm.gov/datastandards/referenceData/1487/current</CommonCoreOntologies:definition_source>
-        <CommonCoreOntologies:elucidation>A Term Appointment Not-to-exceed (date) Identifier consists of the string &apos;Term Appointment Not-to exceed&apos; followed by a Calendar Date Identifier. Term appointments are appointments limited to a specified time period lasting at least more than one year, but no more than 4 years. Thus, the Calendar Date Identifier designates a Calendar Date occurring at least more than one year after, but no more than 4 years after, the initial Date of appointment. The length of the appointment is therefore not to exceed the designated Calendar Date.</CommonCoreOntologies:elucidation>
-        <CommonCoreOntologies:elucidation>An Appointment Not-to-exceed (date) Identifier consists of the string &apos;Appointment Not-to-exceed&apos; followed by some Calendar Date Identifier. Temporary Appointments are appointments limited to a specified time period of one year or less. Thus, the Calendar Date Identifier designates a Calendar Day occuring one year or less after the initial Date of appointment. The length of the appointment is therefore not to exceed the designated Calendar Day.
+        <CommonCoreOntologies:elucidation>An Appointment Not-To-Exceed (Date) Identifier consists of the string &apos;Appointment&apos; followed by some Not to Exceed Date Identifier. Temporary Appointments are appointments limited to a specified time period of one year or less. Thus, the Not to Exceed Date Identifier designates a Calendar Day occuring one year or less after the initial Date of appointment. The length of the appointment is therefore not to exceed the designated Calendar Day.
 
 Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apos;.</CommonCoreOntologies:elucidation>
         <CommonCoreOntologies:example_of_usage>&quot;Appointment Not-to-exceed October 31, 2024&quot;</CommonCoreOntologies:example_of_usage>
+        <rdfs:comment>Although the way that OPM labels it is unfortunate, this is the NOA identifier for temporary appointment actions to positions in the Competitive Services.
+
+Notice also that while a Provisional Appointment is a subtype of Temporary Appointment, as far as I undersand the OPM Guide to Processing Personnel Actions, this NOA is used specifically for temporary appointments in the Competitive Services that are not provisional. Hence the logical axiom</rdfs:comment>
         <rdfs:label>Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
     </owl:Class>
     
@@ -1751,6 +2371,108 @@ Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apo
     
 
 
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Excepted_Appointment_Not-To-Exceed_(Date)_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Excepted_Appointment_Not-To-Exceed_(Date)_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_571"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action_(Narrow)"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Conversion to Appointment NOA Identifier that has some Not To Exceed Date Identifier as a part and designates a Personnel Action wherein the Employee&apos;s appointment is changed to Excepted Services position that is either a temporary position, or a time limited position lasting longer than one year, and where the duration of the appointment is not to exceed the Calendar Day designated by the Not To Exceed Date Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf
+[See under Definitions, but also Table 11A]</CommonCoreOntologies:definition_source>
+        <rdfs:label>Conversion to Excepted Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Provisional_Appointment_Not-To-Exceed_(Date)_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Provisional_Appointment_Not-To-Exceed_(Date)_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_590"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Conversion_to_Provisional_Appointment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>A Conversion to Appointment NOA Identifier that has some Not To Exceed Date Identifier as a part and designates some Conversion to Provisional Appointment.</CommonCoreOntologies:definition>
+        <rdfs:label>Conversion to Provisional Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Appointment_Not-To-Exceed_(Date)_Identifier -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Excepted_Appointment_Not-To-Exceed_(Date)_Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Appointment_NOA_Identifier"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_171"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Appointment_Action"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action_(Narrow)"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Not To Exceed Date Identifier as a part and designates the appointment of a Person to an Excepted Services position that is either a temporary position, or a time limited position lasting longer than one year, and where the duration of the appointment is not to exceed the Calendar Day designated by the Not To Exceed Date Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf
+[See under Definitions, but also Table 11A]</CommonCoreOntologies:definition_source>
+        <rdfs:label>Excepted Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Not-To-Exceed_(Date)_Identifier -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Overseas_Limited_Appointment_Not-To-Exceed_(Date)_Identifier">
@@ -1758,7 +2480,7 @@ Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1767,7 +2489,7 @@ Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apo
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Temporary_Overseas_Limited_Appointment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Calendar Date Identifier as a part and designates a Temporary Overseas Limited Appointment where the period of appointment is not to exceed the Calendar Day designated by the Calendar Date Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Not To Exceed Date Identifier as a part and designates a Temporary Overseas Limited Appointment where the duration of the appointment is not to exceed the Calendar Day designated by the Not To Exceed Date Identifier.</CommonCoreOntologies:definition>
         <rdfs:label>Overseas Limited Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
     </owl:Class>
     
@@ -1780,7 +2502,13 @@ Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designated_by"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_190"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1789,7 +2517,8 @@ Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apo
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Provisional_Appointment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Calendar Date Identifier as a part and designates a Provisional Appointment where the time period of the appointment is not to exceed the Calendar Day designated by the Calendar Date Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Not To Exceed Date Identifier as a part and designates a Provisional Appointment where the duration of the appointment is not to exceed the Calendar Day designated by the Not To Exceed Date Identifier.</CommonCoreOntologies:definition>
+        <rdfs:comment>This NOA Identifer is used for Provisional Appointments to positions within the Competitive Services, Provisional Appointments to positions within the Excepted Services, and Provisional Appointments to positions within the Senior Executive Services.</rdfs:comment>
         <rdfs:label>Provisional Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
     </owl:Class>
     
@@ -1802,7 +2531,7 @@ Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/CalendarDateIdentifier"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Not_To_Exceed_Date_Identifier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1811,6 +2540,13 @@ Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apo
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Nature_of_Action_Code_148"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/designates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Senior_Executive_Service_Limited_Term_Appointment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Not To Exceed Date Identifier as a part and designates a Senior Executive Services Limited Term Appointment where the duration of the appointment is not to exceed the Calendar Day designated by the Not To Exceed Date Identifier.</CommonCoreOntologies:definition>
         <rdfs:label>Senior Executive Service Limited Term Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
     </owl:Class>
     
@@ -1838,9 +2574,27 @@ Should perhaps say &apos;effective date&apos; rather than &apos;initial date&apo
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Competitive_Services_Term_Appointment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Calendar Date Identifier as a part and designates a Term Appointment where time period of the appointment is not to exceed the Calendar Date designated by the Calendar Date Identifier.</CommonCoreOntologies:definition>
+        <CommonCoreOntologies:definition>An Appointment NOA Identifier that has some Not To Exceed Date Identifier as a part and designates a Term Appointment where the duration of the appointment is not to exceed the Calendar Day designated by the Not To Exceed Date Identifier.</CommonCoreOntologies:definition>
         <CommonCoreOntologies:definition_source>https://www.opm.gov/policy-data-oversight/hiring-information/competitive-hiring/ [see in particular &apos;Types of Appointment (Status)&apos;]; https://dw.opm.gov/datastandards/referenceData/1487/current; https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa01.pdf</CommonCoreOntologies:definition_source>
         <rdfs:label>Term Appointment Not-To-Exceed (Date) Identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action_(Narrow) -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action_(Narrow)">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/phiba/ontologies/2024/0/HR-Ontology-Prototype#Time_Limited_Appointment_Action"/>
+        <CommonCoreOntologies:definition>A Time Limited Appointment Action where a Person is assigned to an Excepted Services position the duration of which is expected to last longer than one year.</CommonCoreOntologies:definition>
+        <rdfs:comment>Not sure how best to label this class. But this class is here to cover the usage of &apos;TIme Limited Appointment&apos; that occurs in section 2 (Definitions) of Chapter 11 of OPM&apos;s Guide To Processing Personnel Actions [https://www.opm.gov/policy-data-oversight/data-analysis-documentation/personnel-documentation/processing-personnel-actions/gppa11.pdf]
+
+&quot;TIME LIMITED APPOINTMENT—A non-permanent appointment
+made for more than 1 year.&quot;
+
+According to § 213.104(a)(1) of the U.S. Code of Federal Regulations, &quot;Time-limited appointments made for more than 1 year are not considered to be temporary appointments&quot; [https://www.law.cornell.edu/cfr/text/5/213.104]
+
+So this class covers appointments in the Excepted Services that last for longer than a year, but which are not to exceed a specified date.</rdfs:comment>
+        <rdfs:label>Time Limited Appointment Action (Narrow)</rdfs:label>
     </owl:Class>
 </rdf:RDF>
 
